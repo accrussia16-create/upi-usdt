@@ -280,7 +280,11 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   const [deposits, setDeposits] = useState<DepositTransaction[]>(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEYS.DEPOSITS);
-      return saved ? JSON.parse(saved) : INITIAL_DEPOSITS;
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length >= 6) return parsed;
+      }
+      return INITIAL_DEPOSITS;
     } catch {
       return INITIAL_DEPOSITS;
     }
@@ -289,7 +293,11 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   const [withdrawals, setWithdrawals] = useState<WithdrawalTransaction[]>(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEYS.WITHDRAWALS);
-      return saved ? JSON.parse(saved) : INITIAL_WITHDRAWALS;
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length >= 4) return parsed;
+      }
+      return INITIAL_WITHDRAWALS;
     } catch {
       return INITIAL_WITHDRAWALS;
     }
