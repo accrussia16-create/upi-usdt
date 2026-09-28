@@ -1,0 +1,6 @@
+{
+  "name": "UPI-Pay & Global Exchange",
+  "description": "Multi-currency and crypto exchange platform supporting UPI automated redirect, EasyPaisa, JazzCash, USDT, live order tracking, demo wallet, and comprehensive admin controls.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
