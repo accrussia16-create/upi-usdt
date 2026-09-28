@@ -182,9 +182,9 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   const [currentUserId, setCurrentUserId] = useState<string | null>(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEYS.CURRENT_USER_ID);
-      return saved || 'USR-CLIENT-02';
+      return saved || null;
     } catch {
-      return 'USR-CLIENT-02';
+      return null;
     }
   });
 

@@ -86,32 +86,6 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, initialMode, onClo
           </p>
         </div>
 
-        {/* Demo Fast Autofill Chips */}
-        <div className="mb-5 p-3 rounded-xl bg-slate-950/70 border border-slate-800">
-          <div className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-2 flex items-center justify-between">
-            <span>⚡ Demo 1-Click Credentials</span>
-            <span className="text-emerald-400 font-normal">Click to fill</span>
-          </div>
-          <div className="grid grid-cols-2 gap-2">
-            <button
-              type="button"
-              onClick={() => fillDemoAccount('+92 312 9876543', 'user123')}
-              className="px-2 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-700 text-left text-xs transition cursor-pointer"
-            >
-              <div className="font-semibold text-emerald-400">Client Demo</div>
-              <div className="text-[10px] text-slate-400 font-mono">+92 312 9876543</div>
-            </button>
-            <button
-              type="button"
-              onClick={() => fillDemoAccount('+92 300 1234567', 'admin123')}
-              className="px-2 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-amber-500/30 text-left text-xs transition cursor-pointer"
-            >
-              <div className="font-semibold text-amber-400">Admin Demo</div>
-              <div className="text-[10px] text-slate-400 font-mono">+92 300 1234567</div>
-            </button>
-          </div>
-        </div>
-
         {/* Feedback Messages */}
         {error && (
           <div className="mb-4 p-3 rounded-xl bg-red-950/50 border border-red-500/50 text-red-200 text-xs flex items-center gap-2">

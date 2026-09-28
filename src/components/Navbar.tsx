@@ -217,32 +217,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAuth, onOpenSupport }) => 
                         <span className="font-mono text-slate-400 text-[11px]">{currentUser.phone}</span>
                       </div>
 
-                      {/* Fast Role Switcher */}
-                      <div className="mb-2">
-                        <span className="text-[10px] font-bold text-slate-500 uppercase block mb-1">
-                          ⚡ 1-Click Role Switch (Demo)
-                        </span>
-                        <div className="space-y-1">
-                          {users.slice(0, 2).map(u => (
-                            <button
-                              key={u.id}
-                              onClick={() => {
-                                switchAccount(u.id);
-                                setShowUserDropdown(false);
-                              }}
-                              className={`w-full text-left p-1.5 rounded-lg flex items-center justify-between cursor-pointer ${
-                                u.id === currentUser.id
-                                  ? 'bg-emerald-950 text-emerald-300 font-bold border border-emerald-500/30'
-                                  : 'text-slate-300 hover:bg-slate-800'
-                              }`}
-                            >
-                              <span>{u.fullName}</span>
-                              <span className="text-[9px] uppercase px-1 rounded bg-slate-800">{u.role}</span>
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-
                       <button
                         onClick={() => {
                           logout();

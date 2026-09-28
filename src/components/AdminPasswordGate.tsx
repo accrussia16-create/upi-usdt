@@ -87,17 +87,9 @@ export const AdminPasswordGate: React.FC<AdminPasswordGateProps> = ({ onUnlockSu
         </form>
 
         <div className="pt-2 border-t border-slate-800/80">
-          <button
-            type="button"
-            onClick={() => {
-              setPassword('admin123');
-              unlockAdminWithPassword('admin123');
-              switchAccount('USR-ADMIN-01');
-            }}
-            className="text-xs text-slate-400 hover:text-amber-300 transition cursor-pointer"
-          >
-            ⚡ 1-Click Master Admin Auto-Login (Demo)
-          </button>
+          <p className="text-[11px] text-slate-500">
+            Authorized administrator access only. All actions are logged.
+          </p>
         </div>
       </div>
     </div>

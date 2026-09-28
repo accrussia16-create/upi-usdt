@@ -1,0 +1,112 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile with balances and role",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "phone": { "type": "string" },
+        "fullName": { "type": "string" },
+        "role": { "type": "string", "enum": ["user", "admin"] },
+        "status": { "type": "string", "enum": ["active", "deactivated"] },
+        "balance": {
+          "type": "object",
+          "properties": {
+            "pkr": { "type": "number" },
+            "inr": { "type": "number" },
+            "usdt": { "type": "number" }
+          },
+          "required": ["pkr", "inr", "usdt"]
+        },
+        "createdAt": { "type": "string" },
+        "lastLogin": { "type": "string" }
+      },
+      "required": ["id", "phone", "fullName", "role", "status", "balance", "createdAt"]
+    },
+    "Deposit": {
+      "title": "Deposit",
+      "description": "Deposit transaction submission and review",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "trackingId": { "type": "string" },
+        "userId": { "type": "string" },
+        "userPhone": { "type": "string" },
+        "methodId": { "type": "string" },
+        "methodName": { "type": "string" },
+        "currency": { "type": "string", "enum": ["PKR", "INR", "USDT"] },
+        "amount": { "type": "number" },
+        "fee": { "type": "number" },
+        "finalCreditAmount": { "type": "number" },
+        "utrNumber": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "approved", "rejected"] },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "trackingId", "userId", "currency", "amount", "utrNumber", "status", "createdAt"]
+    },
+    "Withdrawal": {
+      "title": "Withdrawal",
+      "description": "Withdrawal payout requests",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "trackingId": { "type": "string" },
+        "userId": { "type": "string" },
+        "userPhone": { "type": "string" },
+        "methodId": { "type": "string" },
+        "methodName": { "type": "string" },
+        "currency": { "type": "string", "enum": ["PKR", "INR", "USDT"] },
+        "amount": { "type": "number" },
+        "fee": { "type": "number" },
+        "netPayoutAmount": { "type": "number" },
+        "receiverAccount": { "type": "string" },
+        "receiverName": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "processing", "completed", "rejected"] },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "trackingId", "userId", "currency", "amount", "receiverAccount", "status", "createdAt"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Exchange currency swap order",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "trackingCode": { "type": "string" },
+        "userId": { "type": "string" },
+        "userPhone": { "type": "string" },
+        "fromCurrency": { "type": "string" },
+        "toCurrency": { "type": "string" },
+        "sendAmount": { "type": "number" },
+        "receiveAmount": { "type": "number" },
+        "exchangeRate": { "type": "number" },
+        "receiverAccount": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "processing", "completed", "rejected", "cancelled"] },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "trackingCode", "userId", "fromCurrency", "toCurrency", "sendAmount", "receiveAmount", "status", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Stores user profile and account balances"
+    },
+    "/deposits/{depositId}": {
+      "schema": "Deposit",
+      "description": "Deposit transaction records"
+    },
+    "/withdrawals/{withdrawalId}": {
+      "schema": "Withdrawal",
+      "description": "Withdrawal payout records"
+    },
+    "/orders/{orderId}": {
+      "schema": "Order",
+      "description": "Currency exchange orders"
+    }
+  }
+}

@@ -13,6 +13,7 @@ import { OrdersTrackerView } from './components/OrdersTrackerView';
 import { AdminPanel } from './components/AdminPanel';
 import { AdminPasswordGate } from './components/AdminPasswordGate';
 import { AuthModal } from './components/AuthModal';
+import { AuthScreen } from './components/AuthScreen';
 import { SupportModal } from './components/SupportModal';
 import {
   ShieldCheck,
@@ -50,6 +51,19 @@ function MainAppContent() {
     setAuthMode(mode);
     setIsAuthOpen(true);
   };
+
+  // If visitor is not logged in, greet them directly with the Sign In / Sign Up portal
+  if (!currentUser) {
+    return (
+      <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans selection:bg-emerald-500 selection:text-slate-950">
+        <AuthScreen />
+        <SupportModal
+          isOpen={isSupportOpen}
+          onClose={() => setIsSupportOpen(false)}
+        />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans selection:bg-emerald-500 selection:text-slate-950">
